@@ -166,21 +166,16 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 #7. ROS Examples
 
 ### Building the nodes for mono, stereo and RGB-D
-1. Add the path including *Examples/ROS/ORB_SLAM2* to the ROS_PACKAGE_PATH environment variable. Open .bashrc file and add at the end the following line. Replace PATH by the folder where you cloned ORB_SLAM2:
-
-  ```
-  export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:PATH/ORB_SLAM2/Examples/ROS
-  ```
   
-2. Go to *Examples/ROS/ORB_SLAM2* folder and execute:
-
+1. Go to the src forler of your catkin workspace 
+2. Create a symlink to  <ORBSLAM2 path>/Examples/ROS/ORB_SLAM2
   ```
-  mkdir build
-  cd build
-  cmake .. -DROS_BUILD_TYPE=Release
-  make -j
+  ln -s <ORBSLAM2 path>/Examples/ROS/ORB_SLAM2 orbslam2
   ```
-  
+3. Compile the package
+  ```
+  sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/<your ros distro name> --pkg orb_slam2  
+  ```
 ### Running Monocular Node
 For a monocular input from topic `/camera/image_raw` run node ORB_SLAM2/Mono. You will need to provide the vocabulary file and a settings file. See the monocular examples above.
 
@@ -240,3 +235,4 @@ Add 1G of SWAP to avoid running out of memory at compile time
 you can disable swap after compilation
 	sudo swapoff -a
 
+To compile the ros node, add an extra -j1 to the compilation command
