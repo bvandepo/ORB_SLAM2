@@ -7,8 +7,8 @@ ENDIF()
 
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall -O3 -march=native ")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O3 -march=native")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall -O3 -mtune=cortex-a53")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O3 -mtune=cortex-a53")
 
 #To deactivate optimizations for debugging purposes
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -march=native -pipe -p -pg -g3 -Wall -W -D_REENTRANT -coverage -fprofile-arcs -ftest-coverage -Wextra -g")
